@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Willkommen | Meine Neue Landingpage</title>
+    <!-- Google Fonts für ein modernes Schriftbild -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variablen für helle, freundliche Farben */
+        :root {
+            --primary-color: #4f46e5;      /* Ein lebhaftes Indigo */
+            --primary-hover: #4338ca;
+            --secondary-color: #f1f5f9;    /* Helles Grau-Blau für Hintergründe */
+            --text-main: #0f172a;          /* Sehr dunkles Blau statt hartem Schwarz */
+            --text-muted: #64748b;         /* Sanftes Grau für Fließtext */
+            --white: #ffffff;
+            --border-color: #e2e8f0;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Basis-Reset */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--white);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        /* Layout Container */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: -0.05em;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-muted);
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+            box-shadow: 0 4px 14px 0 rgba(79, 70, 229, 0.39);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.23);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 2px solid var(--border-color);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--text-main);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section (Willkommensbereich) */
+        .hero {
+            padding-top: 160px;
+            padding-bottom: 120px;
+            background: linear-gradient(180deg, var(--secondary-color) 0%, rgba(241, 245, 249, 0) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 64px;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            background-color: rgba(79, 70, 229, 0.1);
+            color: var(--primary-color);
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.15;
+            font-weight: 800;
+            margin-bottom: 24px;
+            letter-spacing: -0.03em;
+        }
+
+        .hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            position: relative;
+        }
+
+        /* Animierte abstrakte Form als Platzhalter für ein Bild */
+        .abstract-shape {
+            width: 100%;
+            max-width: 500px;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #a5b4fc 100%);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            box-shadow: 0 24px 48px -12px rgba(79, 70, 229, 0.3);
+            animation: shapeMorph 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes shapeMorph {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 50% 50% 30% 70% / 50% 30% 70% 40%; }
+            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        }
+
+        /* Features / Leistungen Section */
+        .features {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+
+        .features-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 64px;
+        }
+
+        .features-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: var(--text-main);
+            letter-spacing: -0.03em;
+        }
+
+        .features-header p {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .feature-card {
+            background-color: var(--secondary-color);
+            padding: 40px 32px;
+            border-radius: 24px;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            background-color: var(--white);
+            border-color: var(--border-color);
+            box-shadow: 0 20px 40px -12px rgba(15, 23, 42, 0.1);
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background-color: rgba(79, 70, 229, 0.1);
+            color: var(--primary-color);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 24px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 100px 0;
+            background-color: var(--secondary-color);
+        }
+
+        .faq-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 48px;
+        }
+
+        .faq-header h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: var(--text-main);
+            letter-spacing: -0.03em;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .faq-item {
+            background-color: var(--white);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-item summary {
+            padding: 24px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-main);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .faq-item[open] summary::after {
+            content: '−';
+        }
+
+        .faq-item p {
+            padding: 0 24px 24px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--white);
+            border-top: 1px solid var(--border-color);
+            padding: 80px 0 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 64px;
+        }
+
+        .footer-brand h3 {
+            color: var(--primary-color);
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            max-width: 320px;
+        }
+
+        .footer-links h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: var(--text-main);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 16px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding-top: 32px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* Responsive Design (Smartphones & Tablets) */
+        @media (max-width: 992px) {
+            .hero-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 48px;
+            }
+            .hero-content {
+                max-width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .hero p {
+                max-width: 600px;
+            }
+            .hero-visual {
+                justify-content: center;
+                width: 100%;
+            }
+            .abstract-shape {
+                max-width: 400px;
+            }
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Auf Handys Navigation verbergen (für diese einfache Version) */
+            }
+            .header-container .btn {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero {
+                padding-top: 120px;
+                padding-bottom: 80px;
+            }
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            .hero-buttons .btn {
+                width: 100%;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .abstract-shape {
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">Brand.</div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Startseite</a></li>
+                    <li><a href="#features">Vorteile</a></li>
+                    <li><a href="#about">Über uns</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </nav>
+            <button class="btn btn-primary">Jetzt starten</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section (Willkommensbereich) -->
+        <section class="hero" id="home">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="hero-badge">🚀 Neu: Version 2.0 ist da</div>
+                    <h1>Die Zukunft beginnt <span>hier & jetzt.</span></h1>
+                    
+                    <!-- ========================================== -->
+                    <!-- ✍️ HIER DEINEN HAUPTTEXT EINFÜGEN          -->
+                    <!-- ========================================== -->
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary">Kostenlos testen</button>
+                        <button class="btn btn-outline">Mehr erfahren</button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <!-- Animierter Platzhalter (CSS) anstelle eines echten Bildes -->
+                    <div class="abstract-shape"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features / Leistungen Section -->
+        <section class="features" id="features">
+            <div class="container">
+                <div class="features-header">
+                    <!-- ========================================== -->
+                    <!-- ✍️ HIER DEINE ÜBERSCHRIFT (LEISTUNGEN) REIN-->
+                    <!-- ========================================== -->
+                    <h2>Unsere Leistungen</h2>
+                    
+                    <!-- ========================================== -->
+                    <!-- ✍️ HIER DEINEN UNTERTITEL EINFÜGEN         -->
+                    <!-- ========================================== -->
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore.</p>
+                </div>
+                <div class="features-grid">
+                    <!-- Spalte 1 -->
+                    <div class="feature-card">
+                        <div class="feature-icon">✨</div>
+                        <!-- ========================================== -->
+                        <!-- ✍️ HIER DEINEN TEXT FÜR SPALTE 1 REIN      -->
+                        <!-- ========================================== -->
+                        <h3>Vorteil 1</h3>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.</p>
+                    </div>
+                    <!-- Spalte 2 -->
+                    <div class="feature-card">
+                        <div class="feature-icon">🚀</div>
+                        <!-- ========================================== -->
+                        <!-- ✍️ HIER DEINEN TEXT FÜR SPALTE 2 REIN      -->
+                        <!-- ========================================== -->
+                        <h3>Vorteil 2</h3>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.</p>
+                    </div>
+                    <!-- Spalte 3 -->
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <!-- ========================================== -->
+                        <!-- ✍️ HIER DEINEN TEXT FÜR SPALTE 3 REIN      -->
+                        <!-- ========================================== -->
+                        <h3>Vorteil 3</h3>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq" id="faq">
+            <div class="container">
+                <div class="faq-header">
+                    <!-- ========================================== -->
+                    <!-- ✍️ HIER DEINE ÜBERSCHRIFT (FAQ) REIN       -->
+                    <!-- ========================================== -->
+                    <h2>Häufig gestellte Fragen (FAQ)</h2>
+                </div>
+                <div class="faq-list">
+                    <!-- Frage 1 -->
+                    <details class="faq-item">
+                        <summary>Frage 1 einfügen</summary>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                    </details>
+                    
+                    <!-- Frage 2 -->
+                    <details class="faq-item">
+                        <summary>Frage 2 einfügen</summary>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                    </details>
+
+                    <!-- Frage 3 -->
+                    <details class="faq-item">
+                        <summary>Frage 3 einfügen</summary>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>Brand.</h3>
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Produkt</h4>
+                    <ul>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Preise</a></li>
+                        <li><a href="#">Updates</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Rechtliches</h4>
+                    <ul>
+                        <li><a href="#">Impressum</a></li>
+                        <li><a href="#">Datenschutz</a></li>
+                        <li><a href="#">AGB</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Meine Website. Alle Rechte vorbehalten.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
